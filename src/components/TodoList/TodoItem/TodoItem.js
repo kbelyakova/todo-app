@@ -16,12 +16,12 @@ const TodoItem = ({
     <div className={styles.container} style={{opacity: todo.checked ? 0.8 : 1}}>
       <div>
         <div className={styles.progress} style={{
-          color: todo.progress === ProgressType.Expects
-            ? "grey"
+          backgroundColor: todo.progress === ProgressType.Expects
+            ? "#84878AFF"
             : todo.progress === ProgressType.InProgress
-              ? "blue"
+              ? "#266fb7"
               : todo.progress === ProgressType.Completed
-                ? "green"
+                ? "#279339FF"
                 : null
         }}>
           {todo.progress}
@@ -42,6 +42,7 @@ const TodoItem = ({
         </div>
         <div aria-hidden
              style={{
+               whiteSpace: 'nowrap',
                overflow: 'hidden',
                textOverflow: 'ellipsis',
              }}

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import styles from './styles/todoForm.module.css'
-import stylesButton from '../../Button/styles/button.module.css'
 import Button from "../../Button/Button";
 import DEFAULT_TODO from "../../../constants/defaultTodo";
 import ProgressType from "../../../enums/ProgressType";

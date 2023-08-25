@@ -10,7 +10,7 @@
 
 .columns {
     display: grid;
-    grid-template-columns: 450px 1fr;
+    grid-template-columns: 38% 62%;
 }
 
 .vertical_scroll {
@@ -22,7 +22,6 @@
     touch-action: none;
     box-sizing: border-box;
     display: grid;
-    /*width: 100%;*/
     grid-template-rows: 110px 1fr;
 }
 
