@@ -3,8 +3,17 @@ import Button from "../../Button/Button";
 import ProgressType from "../../../enums/ProgressType";
 import styles from './styles/todoView.module.css';
 
+/**
+ * Компонент отображения подробной информации о заметке
+ * @param todoId - id заметки
+ * @param todos - все заметки
+ * @param setCurrentTodo - функция изменения текущей заметки для закрытия формы просмотра
+ * @param changeTodo - функция изменения заметки для изменения прогресса выполнения задачи
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const TodoView = ({todoId, todos, setCurrentTodo, changeTodo}) => {
-  const [todo, setTodo] = useState(todoId && todos.find(el => el.id === todoId));
+  const [todo, setTodo] = useState(todoId && todos.find(el => el.id === todoId)); // данные текущей заметки
 
   useEffect(() => {
     todoId && setTodo(todos.find(el => el.id === todoId));

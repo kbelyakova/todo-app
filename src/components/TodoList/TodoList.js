@@ -1,11 +1,21 @@
 import React from 'react';
 import TodoItem from "./TodoItem/TodoItem";
 
+/**
+ * Компонент отображения списка всех заметок
+ * @param closeTodoForm - функция закрытия формы заметок
+ * @param setTodoEditVisible - функция изменения видимости формы заметки для редактирования
+ * @param todos - все заметки
+ * @param deleteTodo - функция удаления заметки
+ * @param checkTodo - функция выбора заметки для отображения подробной информации
+ * @param selectTodoIdForEdit - функция выбора заметки для редактирования
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const TodoList = ({
                     closeTodoForm,
                     setTodoEditVisible,
                     todos,
-                    setTodoAddVisible,
                     deleteTodo,
                     checkTodo,
                     selectTodoIdForEdit,
@@ -16,7 +26,6 @@ const TodoList = ({
         return (
           <TodoItem
             closeTodoForm={closeTodoForm}
-            setTodoAddVisible={setTodoAddVisible}
             setTodoEditVisible={setTodoEditVisible}
             key={todo.id}
             todo={todo}

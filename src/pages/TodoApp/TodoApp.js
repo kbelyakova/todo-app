@@ -7,20 +7,29 @@ import styles from "./styles/todoApp.module.css"
 import SearchTodo from "../../components/Search/SearchTodo";
 import TodoView from "../../components/TodoList/TodoView/TodoView";
 
+/**
+ * Компонент, отображающий страницу с заметками
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const TodoApp = () => {
-  const [todos, setTodos] = useState(DEFAULT_TODO_LIST);
-  const [filtered, setFiltered] = useState([]);
-  const [todoIdForEdit, setTodoIdForEdit] = useState(null);
-  const [todoEditVisible, setTodoEditVisible] = useState(false);
-  const [todoAddVisible, setTodoAddVisible] = useState(false);
-  const [valueSearch, setValueSearch] = useState('');
-  const [currentTodo, setCurrentTodo] = useState(null);
+  const [todos, setTodos] = useState(DEFAULT_TODO_LIST); // все заметки
+  const [filtered, setFiltered] = useState([]); // отфильтраванные заметки
+  const [todoIdForEdit, setTodoIdForEdit] = useState(null); // id заметки для редактирования
+  const [todoEditVisible, setTodoEditVisible] = useState(false); // видимость формы редактирования заметки
+  const [todoAddVisible, setTodoAddVisible] = useState(false); // видимость формы добавления новой заметки
+  const [valueSearch, setValueSearch] = useState(''); // наименование заметки для поиска
+  const [currentTodo, setCurrentTodo] = useState(null); // id выбранной заметки
 
   useEffect(() => {
     setFiltered(todos);
     valueSearch && search(valueSearch);
   }, [todos]);
 
+  /**
+   * Функция поиска заметки по её наименованию
+   * @param value - наименование заметки, которое вводит пользователь для поиска
+   */
   const search = (value) => {
     let currentTodos = [];
     let newTodoList;
@@ -39,6 +48,12 @@ const TodoApp = () => {
     setFiltered(newTodoList);
   };
 
+  /**
+   * Функция добавления новой заметки
+   * @param name - наименование
+   * @param description - описание
+   * @param progress - прогресс выполнения заметки
+   */
   const addTodo = ({name, description, progress}) => {
     setTodos([
       ...todos,
@@ -51,11 +66,19 @@ const TodoApp = () => {
     ]);
   };
 
+  /**
+   * Функция выбора заметки для редактирования
+   * @param id - индекс выбранной заметки
+   */
   const selectTodoIdForEdit = (id) => {
     setCurrentTodo(null);
     setTodoIdForEdit(id);
   };
 
+  /**
+   * Функция удаления заметки
+   * @param id - индекс заметки
+   */
   const deleteTodo = (id) => {
     setCurrentTodo(null);
     setTodoIdForEdit(null);
@@ -63,6 +86,10 @@ const TodoApp = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  /**
+   * Функция выбора заметки для просмотра
+   * @param id - индекс заметки
+   */
   const checkTodo = (id) => {
     setTodoAddVisible(false);
     setTodoIdForEdit(null);
@@ -70,6 +97,12 @@ const TodoApp = () => {
     setCurrentTodo(id);
   };
 
+  /**
+   * Функция изменения заметки
+   * @param name - наименование
+   * @param description - описание
+   * @param progress - прогресс
+   */
   const changeTodo = ({name, description, progress}) => {
     setTodos(
       todos.map((todo) => {
@@ -82,6 +115,9 @@ const TodoApp = () => {
     setTodoIdForEdit(null);
   };
 
+  /**
+   * Функция для отображения формы добавления новой заметки
+   */
   const changeAdd = () => {
     setCurrentTodo(null);
     setTodoAddVisible(true);
@@ -89,6 +125,9 @@ const TodoApp = () => {
     setTodoEditVisible(false);
   }
 
+  /**
+   * Функция для закрытия формы заметки
+   */
   const closeTodoForm = () => {
     setTodoIdForEdit(null);
     setTodoEditVisible(false);
@@ -102,14 +141,12 @@ const TodoApp = () => {
           <div className={styles.list}>
             <div style={{width: '100%'}}>
               <Header onChange={changeAdd}/>
-              <SearchTodo search={search} setValueSearch={setValueSearch} valueSearch={valueSearch} todos={todos}
-                          setFiltered={setFiltered}/>
+              <SearchTodo search={search} setValueSearch={setValueSearch} valueSearch={valueSearch}/>
             </div>
             <div className={styles.vertical_scroll}>
               <TodoList
                 closeTodoForm={() => setTodoAddVisible(false)}
                 setTodoEditVisible={setTodoEditVisible}
-                setTodoAddVisible={setTodoAddVisible}
                 todoIdForEdit={todoIdForEdit}
                 todos={filtered}
                 deleteTodo={deleteTodo}

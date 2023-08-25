@@ -34,3 +34,9 @@
     padding: 3px;
     margin-bottom: 7px;
 }
+
+.text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

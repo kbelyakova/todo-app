@@ -4,19 +4,38 @@ import Button from "../../Button/Button";
 import DEFAULT_TODO from "../../../constants/defaultTodo";
 import ProgressType from "../../../enums/ProgressType";
 
+/**
+ * Компонение формы заметки
+ * @param todos - все заметки
+ * @param close - функция закрытия формы
+ * @param addTodo - функция добавления заметки
+ * @param add - тип формы "добавление"
+ * @param edit - тип формы "редактирование"
+ * @param changeTodo - функция изменения заметки
+ * @param todoEdit - id выбранной заметки для редактирования
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const TodoForm = ({todos, close, addTodo, add, edit, changeTodo, todoEdit}) => {
-  const [todo, setTodo] = useState(todoEdit ? todos.find(el => el.id === todoEdit) : DEFAULT_TODO);
+  const [todo, setTodo] = useState(todoEdit ? todos.find(el => el.id === todoEdit) : DEFAULT_TODO); // данные заметки
 
   useEffect(() => {
     todoEdit && setTodo(todos.find(el => el.id === todoEdit));
   }, [todoEdit, todos]);
 
+  /**
+   * Функция отправки формы
+   */
   const onSubmit = () => {
     edit && changeTodo(todo);
     add && addTodo(todo);
     onClickClose();
   };
 
+  /**
+   * Функция для сохранения новых значений
+   * @param event
+   */
   const onChange = (event) => {
     const {value, name} = event.target;
 
@@ -26,6 +45,9 @@ const TodoForm = ({todos, close, addTodo, add, edit, changeTodo, todoEdit}) => {
     });
   };
 
+  /**
+   * Функция закрытия формы
+   */
   const onClickClose = () => {
     setTodo(DEFAULT_TODO);
     close instanceof Function && close();

@@ -3,6 +3,17 @@ import Button from "../../Button/Button";
 import styles from './styles/todoItem.module.css';
 import ProgressType from "../../../enums/ProgressType";
 
+/**
+ * Компонент оборажения заметки в списке
+ * @param closeTodoForm - функция закрытия формы заметок
+ * @param setTodoEditVisible - функция изменения видимости формы заметки для редактирования
+ * @param todo - данные текущей заметки
+ * @param checkTodo - функция выбора заметки для отображения подробной информации
+ * @param deleteTodo - функция удаления заметки
+ * @param selectTodoIdForEdit - функция выбора заметки для редактирования
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const TodoItem = ({
                     closeTodoForm,
                     setTodoEditVisible,
@@ -13,7 +24,7 @@ const TodoItem = ({
                   }) => {
 
   return (
-    <div className={styles.container} style={{opacity: todo.checked ? 0.8 : 1}}>
+    <div className={styles.container}>
       <div>
         <div className={styles.progress} style={{
           backgroundColor: todo.progress === ProgressType.Expects
@@ -28,26 +39,14 @@ const TodoItem = ({
         </div>
         <div
           aria-hidden
-          style={{
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            opacity: todo.checked ? 0.5 : 1,
-            textDecoration: todo.checked ? 'line-through' : 'none'
-          }}
           onClick={() => checkTodo(todo.id)}
-          className={styles.todo_title}
+          className={`${styles.todo_title} ${styles.text}`}
         >
           {todo.name}
         </div>
         <div aria-hidden
-             style={{
-               whiteSpace: 'nowrap',
-               overflow: 'hidden',
-               textOverflow: 'ellipsis',
-             }}
              onClick={() => checkTodo(todo.id)}
-             className={styles.todo_description}>
+             className={`${styles.todo_description} ${styles.text}`}>
           {todo.description}
         </div>
       </div>
