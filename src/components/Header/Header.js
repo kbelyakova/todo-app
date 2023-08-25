@@ -5,7 +5,7 @@ const Header = ({onChange}) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        Список задач <img onClick={onChange} className={styles.add_img} src={require('../../assets/add.png')} alt={"Добавить"}></img>
+        Список заметок <img onClick={onChange} className={styles.add_img} src={require('../../assets/add.png')} alt={"Добавить"}></img>
       </h1>
     </div>
   );

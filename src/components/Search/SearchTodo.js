@@ -26,7 +26,7 @@ const SearchTodo = ({todos, setFiltered}) => {
       className={styles.search}
       onChange={({target: {value}}) => search(value)}
       type="text"
-      placeholder="Поиск задачи"
+      placeholder="Поиск заметки"
     />
   );
 };

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './styles/todoForm.module.css'
+import stylesButton from '../../Button/styles/button.module.css'
 import Button from "../../Button/Button";
 import DEFAULT_TODO from "../../../constants/defaultTodo";
 import ProgressType from "../../../enums/ProgressType";
@@ -11,7 +12,7 @@ const TodoForm = ({todos, close, addTodo, add, edit, changeTodo, todoEdit}) => {
     todoEdit && setTodo(todos.find(el => el.id === todoEdit));
   }, [todoEdit, todos]);
 
-  const onClick = () => {
+  const onSubmit = () => {
     edit && changeTodo(todo);
     add && addTodo(todo);
     onClickClose();
@@ -35,15 +36,15 @@ const TodoForm = ({todos, close, addTodo, add, edit, changeTodo, todoEdit}) => {
     <div className={styles.form_container}>
 
       <div className={styles.title}>
-        {edit && "Редактирование задачи"}
-        {add && "Добавление новой задачи"}
+        {edit && "Редактирование заметки"}
+        {add && "Добавление новой заметки"}
       </div>
 
-      <div>
+      <form onSubmit={onSubmit}>
         <div className={styles.field_container}>
           <label htmlFor='name'>
             <div className={styles.label_text}>Наименование</div>
-            <input required placeholder="Наименование задачи" autoComplete='off' id='name' value={todo.name}
+            <input required placeholder="Наименование заметки" autoComplete='off' id='name' value={todo.name}
                    onChange={onChange} name='name'/>
           </label>
         </div>
@@ -52,7 +53,7 @@ const TodoForm = ({todos, close, addTodo, add, edit, changeTodo, todoEdit}) => {
           <label htmlFor='description'>
             <div className={styles.label_text}>Описание</div>
             <input
-              placeholder="Описание задачи"
+              placeholder="Описание заметки"
               autoComplete='off'
               id='description'
               value={todo.description}
@@ -72,22 +73,16 @@ const TodoForm = ({todos, close, addTodo, add, edit, changeTodo, todoEdit}) => {
             </select>
           </label>
         </div>
-      </div>
 
-      <div className={styles.button_container}>
-        {add && <Button color='blue' onClick={onClick}>
-          Добавить
-        </Button>}
-        {edit && (
-          <Button color='blue' onClick={onClick}>
-            Сохранить
+        <div className={styles.button_container}>
+          <Button type="submit" color='blue'>
+            {add ? "Добавить" : edit && "Сохранить"}
           </Button>
-        )}
-        <Button style={{marginLeft: '7px'}} color='red' onClick={onClickClose}>
-          Закрыть
-        </Button>
-      </div>
-
+          <Button type="button" style={{marginLeft: '7px'}} color='red' onClick={onClickClose}>
+            Закрыть
+          </Button>
+        </div>
+      </form>
     </div>
   );
 };
