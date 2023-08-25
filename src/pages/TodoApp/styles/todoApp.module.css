@@ -1,0 +1,31 @@
+.container_page {
+    background: rgba(225, 217, 217, 0.49);
+    position: relative;
+    min-height: 100vh;
+}
+
+.container {
+    padding: 7px 12px;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+}
+
+.vertical_scroll {
+    overflow-y: scroll;
+    height: 80vh;
+}
+
+.list {
+    touch-action: none;
+    box-sizing: border-box;
+    display: grid;
+    /*width: 100%;*/
+    grid-template-rows: 110px 1fr;
+}
+
+.todo_form {
+    margin-top: 90px;
+}

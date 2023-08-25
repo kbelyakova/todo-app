@@ -1,0 +1,16 @@
+.title {
+    font-size: 22px;
+    font-weight: 400;
+    margin-left: -20px;
+}
+
+.container {
+    text-align: center;
+}
+
+.add_img {
+    height: 25px;
+    cursor: pointer;
+    margin-bottom: -6px;
+    padding-left: 10px;
+}

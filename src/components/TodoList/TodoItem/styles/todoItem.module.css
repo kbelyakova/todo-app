@@ -1,0 +1,32 @@
+.container {
+    background-color: white;
+    max-width: 100%;
+    box-shadow: 0 8px 12px -8px rgba(36, 62, 80, 0.08);
+    margin-bottom: 16px;
+    margin-right: 15px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.todo_title {
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 7px;
+}
+
+.todo_description {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: right;
+    gap: 7px;
+}
+
+.progress {
+    font-weight: 500;
+    margin-bottom: 7px;
+}
