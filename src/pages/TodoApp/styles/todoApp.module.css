@@ -1,3 +1,4 @@
+/*контейнер страницы*/
 .container_page {
     background: rgba(225, 217, 217, 0.49);
     position: relative;
@@ -8,16 +9,19 @@
     padding: 7px 12px;
 }
 
+/*разделение на две колонки*/
 .columns {
     display: grid;
     grid-template-columns: 38% 62%;
 }
 
+/*вертикальный скролл*/
 .vertical_scroll {
     overflow-y: scroll;
     height: 80vh;
 }
 
+/*стиль для списка заметок*/
 .list {
     touch-action: none;
     box-sizing: border-box;
@@ -25,6 +29,7 @@
     grid-template-rows: 110px 1fr;
 }
 
+/*стиль для формы заметок*/
 .todo_form {
     margin-top: 90px;
 }

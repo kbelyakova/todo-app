@@ -1,3 +1,4 @@
+/*контейнер для заметки*/
 .container {
     background-color: white;
     max-width: 100%;
@@ -8,6 +9,7 @@
     border-radius: 5px;
 }
 
+/*стиль для наименования заметки*/
 .todo_title {
     font-size: 20px;
     font-weight: 500;
@@ -15,17 +17,20 @@
     margin-bottom: 7px;
 }
 
+/*стиль для описания заметки*/
 .todo_description {
     font-size: 14px;
     margin-bottom: 15px;
 }
 
+/*контейнер для кнопок*/
 .button_container {
     display: flex;
     justify-content: right;
     gap: 7px;
 }
 
+/*стиль для прогресса выполнения заметки*/
 .progress {
     width: 100px;
     text-align: center;
@@ -35,6 +40,7 @@
     margin-bottom: 7px;
 }
 
+/*стиль для обрезки текста*/
 .text {
     white-space: nowrap;
     overflow: hidden;
